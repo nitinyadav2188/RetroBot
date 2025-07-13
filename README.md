@@ -89,7 +89,7 @@ Just open `index.html` in your favorite browser — no build required!
 
 ## 📸 Screenshots *(Coming Soon)*
 
-![screenshot placeholder](https://placehold.co/600x300?text=RetroBot+UI)
+![screenshot placeholder](retrobot.png)
 
 ---
 
