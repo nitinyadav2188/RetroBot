@@ -9,6 +9,10 @@ It lives in a draggable window, speaks in sassy retro dialogue, and helps you ma
 
 ---
 
+[Retro Bot](https://retrobotai.netlify.app/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a3a24c6e-45c5-4c7c-9f91-43ae052588c3/deploy-status)](https://app.netlify.com/projects/retrobotai/deploys)
+
+---
 ## 🎮 Features
 
 - 🎤 **8-Bit Personality**  
