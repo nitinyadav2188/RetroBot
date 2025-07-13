@@ -1,3 +1,7 @@
+![screenshot placeholder](retrobot.png)
+
+---
+
 # 🕹️ RetroBot — Your 8-Bit Browser Assistant
 
 RetroBot is a pixelated, moody virtual assistant built for your browser — think Clippy meets a Nintendo cartridge.  
@@ -36,20 +40,6 @@ It lives in a draggable window, speaks in sassy retro dialogue, and helps you ma
 
 ---
 
-## 🧰 File Structure
-
-```
-retro-bot/
-├── index.html          # Main interface
-├── style.css           # Retro pixel styling
-├── bot.js              # Assistant logic (moods, modules)
-├── music/
-│   └── chiptune.mp3    # Sample background music
-└── assets/             # [optional] future sprite and font assets
-```
-
----
-
 ## 🚀 Getting Started
 
 ### 1. Clone the Repository
@@ -84,12 +74,6 @@ Just open `index.html` in your favorite browser — no build required!
 - CRT screen filter effect  
 - Save todos/events using `localStorage`  
 - Retro game unlock Easter eggs (Konami code?)
-
----
-
-## 📸 Screenshots *(Coming Soon)*
-
-![screenshot placeholder](retrobot.png)
 
 ---
 
