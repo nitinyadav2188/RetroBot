@@ -1,0 +1,343 @@
+/* RetroBot Animation Styles */
+
+/* Character Mood Animations */
+.character-sprite.happy .sprite-container {
+    animation: happy-bounce 1s ease-in-out infinite;
+    background: 
+        conic-gradient(from 0deg, 
+            var(--accent-yellow) 0deg 120deg,
+            var(--primary-green) 120deg 240deg,
+            var(--secondary-cyan) 240deg 360deg
+        );
+}
+
+.character-sprite.happy .mouth {
+    border-radius: 12px 12px 0 0;
+    border-top: 2px solid var(--text-bright);
+    border-bottom: none;
+    bottom: 15px;
+}
+
+.character-sprite.annoyed .sprite-container {
+    animation: annoyed-shake 0.5s ease-in-out infinite;
+    background: 
+        conic-gradient(from 0deg, 
+            var(--warning-red) 0deg 120deg,
+            #FF6600 120deg 240deg,
+            var(--accent-yellow) 240deg 360deg
+        );
+}
+
+.character-sprite.annoyed .eyes {
+    animation: annoyed-squint 2s ease-in-out infinite;
+}
+
+.character-sprite.annoyed .mouth {
+    width: 8px;
+    height: 8px;
+    border-radius: 0;
+    border: 2px solid var(--warning-red);
+    bottom: 12px;
+}
+
+.character-sprite.sleepy .sprite-container {
+    animation: sleepy-sway 3s ease-in-out infinite;
+    background: 
+        conic-gradient(from 0deg, 
+            #4444FF 0deg 120deg,
+            #6666CC 120deg 240deg,
+            #8888FF 240deg 360deg
+        );
+    opacity: 0.8;
+}
+
+.character-sprite.sleepy .eyes {
+    height: 3px;
+    animation: sleepy-blink 3s ease-in-out infinite;
+}
+
+.character-sprite.sleepy .mouth {
+    width: 6px;
+    height: 3px;
+    border-radius: 3px;
+    border: 1px solid var(--text-bright);
+    bottom: 14px;
+}
+
+/* Character Animation Keyframes */
+@keyframes happy-bounce {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    25% { transform: translateY(-3px) scale(1.05); }
+    50% { transform: translateY(-1px) scale(1.02); }
+    75% { transform: translateY(-2px) scale(1.03); }
+}
+
+@keyframes annoyed-shake {
+    0%, 100% { transform: translateX(0px) rotate(0deg); }
+    25% { transform: translateX(-1px) rotate(-1deg); }
+    75% { transform: translateX(1px) rotate(1deg); }
+}
+
+@keyframes sleepy-sway {
+    0%, 100% { transform: translateX(0px) rotate(0deg); }
+    33% { transform: translateX(-2px) rotate(-2deg); }
+    66% { transform: translateX(2px) rotate(2deg); }
+}
+
+@keyframes annoyed-squint {
+    0%, 100% { height: 8px; }
+    50% { height: 4px; }
+}
+
+@keyframes sleepy-blink {
+    0%, 85%, 100% { height: 3px; }
+    90%, 95% { height: 1px; }
+}
+
+/* Dialogue Animations */
+.dialogue-text.typing::after {
+    content: '█';
+    animation: cursor-blink 1s infinite;
+    color: var(--primary-green);
+}
+
+@keyframes cursor-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Window Animations */
+.retrobot-window.shake {
+    animation: window-shake 0.5s ease-in-out;
+}
+
+@keyframes window-shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+    20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+/* Button Press Animation */
+button.pressed {
+    animation: button-press 0.2s ease-out;
+}
+
+@keyframes button-press {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+/* Tool Switch Animation */
+.tool-content.switching-in {
+    animation: slide-in-right 0.3s ease-out;
+}
+
+.tool-content.switching-out {
+    animation: slide-out-left 0.3s ease-out;
+}
+
+@keyframes slide-in-right {
+    from { transform: translateX(20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-out-left {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(-20px); opacity: 0; }
+}
+
+/* Notification Animations */
+.notification {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--secondary-cyan);
+    color: var(--bg-dark);
+    padding: 4px 8px;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 2px;
+    animation: notification-bounce 2s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes notification-bounce {
+    0% { transform: translateX(-50%) translateY(10px); opacity: 0; }
+    20% { transform: translateX(-50%) translateY(-5px); opacity: 1; }
+    80% { transform: translateX(-50%) translateY(-5px); opacity: 1; }
+    100% { transform: translateX(-50%) translateY(-20px); opacity: 0; }
+}
+
+/* Calendar Day Hover Animation */
+.calendar-day:hover {
+    animation: calendar-day-pulse 0.3s ease-out;
+}
+
+@keyframes calendar-day-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Todo Item Add Animation */
+.todo-item.new {
+    animation: todo-slide-in 0.5s ease-out;
+}
+
+@keyframes todo-slide-in {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Todo Item Complete Animation */
+.todo-item.completing {
+    animation: todo-complete 0.5s ease-out forwards;
+}
+
+@keyframes todo-complete {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 0.6; }
+}
+
+/* Music Player Visualizer */
+.music-playing .player-controls button#play-btn {
+    animation: music-pulse 1s ease-in-out infinite;
+}
+
+@keyframes music-pulse {
+    0%, 100% { 
+        background: var(--bg-medium); 
+        box-shadow: 0 0 5px var(--shadow-color); 
+    }
+    50% { 
+        background: var(--primary-green); 
+        color: var(--bg-dark);
+        box-shadow: 0 0 15px var(--primary-green); 
+    }
+}
+
+/* Volume Bar Animation */
+.volume-control input[type="range"]::-webkit-slider-thumb {
+    transition: all 0.2s ease;
+}
+
+.volume-control input[type="range"]:hover::-webkit-slider-thumb {
+    animation: volume-thumb-glow 0.5s ease-out;
+}
+
+@keyframes volume-thumb-glow {
+    0% { box-shadow: none; }
+    50% { box-shadow: 0 0 10px var(--secondary-cyan); }
+    100% { box-shadow: none; }
+}
+
+/* Screen Glitch Effect (for special events) */
+.retrobot-window.glitch {
+    animation: screen-glitch 0.5s ease-in-out;
+}
+
+@keyframes screen-glitch {
+    0%, 100% { transform: translate(0); filter: hue-rotate(0deg); }
+    10% { transform: translate(-2px, 1px); filter: hue-rotate(90deg); }
+    20% { transform: translate(2px, -1px); filter: hue-rotate(180deg); }
+    30% { transform: translate(-1px, 2px); filter: hue-rotate(270deg); }
+    40% { transform: translate(1px, -2px); filter: hue-rotate(360deg); }
+    50% { transform: translate(-2px, -1px); filter: hue-rotate(45deg); }
+    60% { transform: translate(2px, 1px); filter: hue-rotate(135deg); }
+    70% { transform: translate(-1px, -2px); filter: hue-rotate(225deg); }
+    80% { transform: translate(1px, 2px); filter: hue-rotate(315deg); }
+    90% { transform: translate(-2px, 1px); filter: hue-rotate(180deg); }
+}
+
+/* Power On/Off Animation */
+.retrobot-window.powering-on {
+    animation: power-on 1s ease-out;
+}
+
+.retrobot-window.powering-off {
+    animation: power-off 0.5s ease-in forwards;
+}
+
+@keyframes power-on {
+    0% { 
+        transform: scale(0.1); 
+        opacity: 0; 
+        filter: brightness(3) contrast(2); 
+    }
+    50% { 
+        transform: scale(1.1); 
+        filter: brightness(1.5) contrast(1.5); 
+    }
+    100% { 
+        transform: scale(1); 
+        opacity: 1; 
+        filter: brightness(1) contrast(1); 
+    }
+}
+
+@keyframes power-off {
+    0% { 
+        transform: scale(1); 
+        opacity: 1; 
+        filter: brightness(1); 
+    }
+    100% { 
+        transform: scale(0.1); 
+        opacity: 0; 
+        filter: brightness(0); 
+    }
+}
+
+/* Easter Egg Konami Animation */
+.retrobot-window.konami-activated {
+    animation: konami-celebration 3s ease-in-out;
+}
+
+@keyframes konami-celebration {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(5deg); }
+    50% { transform: scale(1.2) rotate(-5deg); }
+    75% { transform: scale(1.1) rotate(5deg); }
+}
+
+/* Special Theme Unlock Animation */
+.theme-unlock-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(45deg, var(--accent-yellow), var(--secondary-cyan));
+    color: var(--bg-dark);
+    padding: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 3px solid var(--primary-green);
+    box-shadow: 0 0 30px var(--shadow-color);
+    animation: theme-unlock 3s ease-out forwards;
+    z-index: 10001;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+@keyframes theme-unlock {
+    0% { 
+        transform: translate(-50%, -50%) scale(0) rotate(180deg); 
+        opacity: 0; 
+    }
+    20% { 
+        transform: translate(-50%, -50%) scale(1.2) rotate(0deg); 
+        opacity: 1; 
+    }
+    80% { 
+        transform: translate(-50%, -50%) scale(1) rotate(0deg); 
+        opacity: 1; 
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(0.8) rotate(0deg); 
+        opacity: 0; 
+    }
+}

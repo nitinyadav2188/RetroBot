@@ -1,0 +1,344 @@
+/* RetroBot Theme System */
+
+/* Default Theme (Matrix Green) - Already defined in retrobot.css */
+
+/* Amber Theme */
+.retrobot-window.theme-amber {
+    --primary-green: #FFB000;
+    --secondary-cyan: #FFA500;
+    --accent-yellow: #FFFF80;
+    --warning-red: #FF4400;
+    --bg-dark: #1A0A00;
+    --bg-medium: #2A1500;
+    --bg-light: #3A2000;
+    --text-bright: #FFB000;
+    --text-dim: #AA7700;
+    --border-color: #CC8800;
+    --shadow-color: rgba(255, 176, 0, 0.3);
+}
+
+/* Blue Theme */
+.retrobot-window.theme-blue {
+    --primary-green: #4080FF;
+    --secondary-cyan: #80C0FF;
+    --accent-yellow: #C0E0FF;
+    --warning-red: #FF4080;
+    --bg-dark: #000A1A;
+    --bg-medium: #00152A;
+    --bg-light: #00203A;
+    --text-bright: #4080FF;
+    --text-dim: #2040AA;
+    --border-color: #3366CC;
+    --shadow-color: rgba(64, 128, 255, 0.3);
+}
+
+/* Purple Theme */
+.retrobot-window.theme-purple {
+    --primary-green: #AA44FF;
+    --secondary-cyan: #CC88FF;
+    --accent-yellow: #DDAAFF;
+    --warning-red: #FF4488;
+    --bg-dark: #0A001A;
+    --bg-medium: #15002A;
+    --bg-light: #20003A;
+    --text-bright: #AA44FF;
+    --text-dim: #6622AA;
+    --border-color: #8833CC;
+    --shadow-color: rgba(170, 68, 255, 0.3);
+}
+
+/* Red Theme */
+.retrobot-window.theme-red {
+    --primary-green: #FF4040;
+    --secondary-cyan: #FF8080;
+    --accent-yellow: #FFC0C0;
+    --warning-red: #FF0000;
+    --bg-dark: #1A0000;
+    --bg-medium: #2A0000;
+    --bg-light: #3A0000;
+    --text-bright: #FF4040;
+    --text-dim: #AA2020;
+    --border-color: #CC3030;
+    --shadow-color: rgba(255, 64, 64, 0.3);
+}
+
+/* Rainbow Theme (Special unlock) */
+.retrobot-window.theme-rainbow {
+    --primary-green: #FF0080;
+    --secondary-cyan: #0080FF;
+    --accent-yellow: #80FF00;
+    --warning-red: #FF8000;
+    --bg-dark: #000000;
+    --bg-medium: #111111;
+    --bg-light: #222222;
+    --text-bright: #FFFFFF;
+    --text-dim: #AAAAAA;
+    --border-color: #FFFFFF;
+    --shadow-color: rgba(255, 255, 255, 0.3);
+    
+    /* Rainbow border animation */
+    border: 3px solid;
+    border-image: linear-gradient(45deg, 
+        #FF0000 0%, 
+        #FF8000 16.66%, 
+        #FFFF00 33.33%, 
+        #80FF00 50%, 
+        #00FFFF 66.66%, 
+        #8000FF 83.33%, 
+        #FF0080 100%
+    ) 1;
+    animation: rainbow-border 3s linear infinite;
+}
+
+@keyframes rainbow-border {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+.retrobot-window.theme-rainbow .character-sprite .sprite-container {
+    background: conic-gradient(from 0deg,
+        #FF0000 0deg,
+        #FF8000 51.4deg,
+        #FFFF00 102.8deg,
+        #80FF00 154.2deg,
+        #00FF80 205.6deg,
+        #00FFFF 257deg,
+        #0080FF 308.4deg,
+        #8000FF 359.8deg,
+        #FF0000 360deg
+    );
+    animation: rainbow-spin 2s linear infinite, happy-bounce 1s ease-in-out infinite;
+}
+
+@keyframes rainbow-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Retro Computer Themes */
+
+/* Commodore 64 Theme */
+.retrobot-window.theme-c64 {
+    --primary-green: #A5A5FF;
+    --secondary-cyan: #FF5555;
+    --accent-yellow: #FFFF55;
+    --warning-red: #FF5555;
+    --bg-dark: #4040E0;
+    --bg-medium: #5050F0;
+    --bg-light: #6060FF;
+    --text-bright: #A5A5FF;
+    --text-dim: #8080C0;
+    --border-color: #A5A5FF;
+    --shadow-color: rgba(165, 165, 255, 0.3);
+}
+
+/* Apple II Theme */
+.retrobot-window.theme-apple2 {
+    --primary-green: #00FF00;
+    --secondary-cyan: #FFFF00;
+    --accent-yellow: #FFFFFF;
+    --warning-red: #FF0000;
+    --bg-dark: #000000;
+    --bg-medium: #001100;
+    --bg-light: #002200;
+    --text-bright: #00FF00;
+    --text-dim: #00AA00;
+    --border-color: #00DD00;
+    --shadow-color: rgba(0, 255, 0, 0.3);
+}
+
+/* Atari Theme */
+.retrobot-window.theme-atari {
+    --primary-green: #D2B48C;
+    --secondary-cyan: #F4A460;
+    --accent-yellow: #FFE4B5;
+    --warning-red: #CD853F;
+    --bg-dark: #8B4513;
+    --bg-medium: #A0522D;
+    --bg-light: #D2691E;
+    --text-bright: #F5DEB3;
+    --text-dim: #DEB887;
+    --border-color: #D2B48C;
+    --shadow-color: rgba(210, 180, 140, 0.3);
+}
+
+/* CRT Effects for Different Themes */
+.retrobot-window.theme-amber::before {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 176, 0, var(--scanline-opacity)) 2px,
+        rgba(255, 176, 0, var(--scanline-opacity)) 4px
+    );
+}
+
+.retrobot-window.theme-blue::before {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(64, 128, 255, var(--scanline-opacity)) 2px,
+        rgba(64, 128, 255, var(--scanline-opacity)) 4px
+    );
+}
+
+.retrobot-window.theme-purple::before {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(170, 68, 255, var(--scanline-opacity)) 2px,
+        rgba(170, 68, 255, var(--scanline-opacity)) 4px
+    );
+}
+
+.retrobot-window.theme-red::before {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 64, 64, var(--scanline-opacity)) 2px,
+        rgba(255, 64, 64, var(--scanline-opacity)) 4px
+    );
+}
+
+.retrobot-window.theme-rainbow::before {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, var(--scanline-opacity)) 2px,
+        rgba(255, 255, 255, var(--scanline-opacity)) 4px
+    );
+    animation: rainbow-scanlines 2s linear infinite;
+}
+
+@keyframes rainbow-scanlines {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+/* Theme Selection Interface */
+.theme-selector {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg-dark);
+    border: 2px solid var(--border-color);
+    border-top: none;
+    padding: 10px;
+    display: none;
+    z-index: 1000;
+}
+
+.theme-selector.active {
+    display: block;
+    animation: slide-down 0.3s ease-out;
+}
+
+@keyframes slide-down {
+    from { transform: translateY(-10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.theme-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.theme-option {
+    padding: 8px;
+    border: 2px solid var(--border-color);
+    background: var(--bg-medium);
+    color: var(--text-bright);
+    font-size: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.theme-option:hover {
+    background: var(--border-color);
+    color: var(--bg-dark);
+    transform: scale(1.05);
+}
+
+.theme-option.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+    position: relative;
+}
+
+.theme-option.locked::after {
+    content: '🔒';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+}
+
+/* Special Theme Effects */
+.retrobot-window.theme-glitch {
+    animation: theme-glitch 0.1s linear infinite;
+}
+
+@keyframes theme-glitch {
+    0% { filter: hue-rotate(0deg) saturate(1); }
+    10% { filter: hue-rotate(90deg) saturate(1.5); }
+    20% { filter: hue-rotate(180deg) saturate(0.5); }
+    30% { filter: hue-rotate(270deg) saturate(2); }
+    40% { filter: hue-rotate(360deg) saturate(1); }
+    50% { filter: hue-rotate(45deg) saturate(1.2); }
+    60% { filter: hue-rotate(135deg) saturate(0.8); }
+    70% { filter: hue-rotate(225deg) saturate(1.8); }
+    80% { filter: hue-rotate(315deg) saturate(0.6); }
+    90% { filter: hue-rotate(405deg) saturate(1.4); }
+    100% { filter: hue-rotate(0deg) saturate(1); }
+}
+
+/* Holiday Themes (Seasonal Easter Eggs) */
+.retrobot-window.theme-christmas {
+    --primary-green: #00AA00;
+    --secondary-cyan: #FF0000;
+    --accent-yellow: #FFD700;
+    --warning-red: #FF0000;
+    --bg-dark: #004400;
+    --bg-medium: #006600;
+    --bg-light: #008800;
+    --text-bright: #FFFFFF;
+    --text-dim: #CCCCCC;
+    --border-color: #00CC00;
+    --shadow-color: rgba(0, 204, 0, 0.3);
+}
+
+.retrobot-window.theme-halloween {
+    --primary-green: #FF6600;
+    --secondary-cyan: #CC00CC;
+    --accent-yellow: #FFAA00;
+    --warning-red: #AA0000;
+    --bg-dark: #220000;
+    --bg-medium: #330000;
+    --bg-light: #440000;
+    --text-bright: #FF6600;
+    --text-dim: #BB4400;
+    --border-color: #DD5500;
+    --shadow-color: rgba(255, 102, 0, 0.3);
+}
+
+/* Theme transition animations */
+.retrobot-window.theme-transitioning {
+    animation: theme-transition 1s ease-in-out;
+}
+
+@keyframes theme-transition {
+    0%, 100% { filter: brightness(1) contrast(1); }
+    25% { filter: brightness(1.5) contrast(1.5) hue-rotate(90deg); }
+    50% { filter: brightness(0.5) contrast(2) hue-rotate(180deg); }
+    75% { filter: brightness(2) contrast(0.5) hue-rotate(270deg); }
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroBot Assistant</title>
+    <link rel="stylesheet" href="css/retrobot.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/themes.css">
+</head>
+<body>
+    <!-- Demo page for testing RetroBot -->
+    <div class="demo-content">
+        <h1>🤖 RetroBot Assistant</h1>
+        <p>Your 8-bit virtual assistant is ready to help! Use the floating window to manage your calendar, todos, and music.</p>
+        <p><strong>Easter Egg:</strong> Try the Konami code: ↑↑↓↓←→←→BA to unlock special themes!</p>
+        
+        <div class="demo-controls">
+            <button onclick="retroBot.switchTool('calendar')">📅 Open Calendar</button>
+            <button onclick="retroBot.switchTool('todo')">✅ Open Todo List</button>
+            <button onclick="retroBot.switchTool('music')">🎵 Open Music Player</button>
+            <button onclick="retroBot.changeMood('happy')">Make Happy</button>
+            <button onclick="retroBot.changeMood('annoyed')">Make Annoyed</button>
+            <button onclick="retroBot.changeMood('sleepy')">Make Sleepy</button>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: var(--bg-medium); border: 2px solid var(--border-color); border-radius: 8px;">
+            <h3 style="color: var(--text-bright); margin-top: 0;">🎮 Available Features:</h3>
+            <ul style="color: var(--text-bright); line-height: 1.6;">
+                <li><strong>💬 Chat:</strong> Talk with RetroBot using natural language</li>
+                <li><strong>📅 Calendar:</strong> View dates and add events quickly</li>
+                <li><strong>✅ Todo List:</strong> Manage tasks with priority levels</li>
+                <li><strong>🎵 Music Player:</strong> Play retro tracks and manage playlists</li>
+                <li><strong>🎨 Themes:</strong> Unlock new color schemes through interaction</li>
+                <li><strong>🎮 Easter Eggs:</strong> Hidden features and special modes</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- RetroBot Assistant Window -->
+    <div id="retrobot-container" class="retrobot-hidden">
+        <div class="retrobot-window">
+            <!-- Title Bar -->
+            <div class="titlebar">
+                <div class="title">
+                    <span class="icon">🤖</span>
+                    RetroBot v1.0
+                </div>
+                <div class="controls">
+                    <button class="minimize-btn" onclick="retroBot.minimize()">−</button>
+                    <button class="close-btn" onclick="retroBot.hide()">×</button>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="retrobot-content">
+                <!-- Character Display -->
+                <div class="character-section">
+                    <div class="character-sprite" id="retrobot-sprite">
+                        <div class="sprite-container">
+                            <div class="eyes" id="character-eyes"></div>
+                            <div class="mouth" id="character-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="mood-indicator">
+                        <span id="mood-text">Happy</span>
+                        <div class="mood-bar">
+                            <div class="mood-fill" id="mood-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dialogue Section -->
+                <div class="dialogue-section">
+                    <div class="dialogue-box" id="dialogue-box">
+                        <div class="dialogue-text" id="dialogue-text">
+                            Ahoy there! Ready to rock your schedule? 🎸
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools Section -->
+                <div class="tools-section">
+                    <div class="tool-tabs">
+                        <button class="tab-btn active" onclick="retroBot.switchTool('chat')">💬 Chat</button>
+                        <button class="tab-btn" onclick="retroBot.switchTool('calendar')">📅 Calendar</button>
+                        <button class="tab-btn" onclick="retroBot.switchTool('todo')">✅ Todo</button>
+                        <button class="tab-btn" onclick="retroBot.switchTool('music')">🎵 Music</button>
+                    </div>
+
+                    <!-- Chat Tool -->
+                    <div class="tool-content active" id="tool-chat">
+                        <div class="input-section">
+                            <input type="text" id="user-input" placeholder="Type your message..." maxlength="100">
+                            <button onclick="retroBot.processInput()">Send</button>
+                        </div>
+                        <div class="quick-actions">
+                            <button onclick="retroBot.quickAction('help')">Help</button>
+                            <button onclick="retroBot.quickAction('time')">Time</button>
+                            <button onclick="retroBot.quickAction('joke')">Joke</button>
+                            <button onclick="retroBot.quickAction('mood')">Mood</button>
+                        </div>
+                    </div>
+
+                    <!-- Calendar Tool -->
+                    <div class="tool-content" id="tool-calendar">
+                        <div class="calendar-header">
+                            <button onclick="retroBot.calendar.prevMonth()">◀</button>
+                            <span id="calendar-month">December 2024</span>
+                            <button onclick="retroBot.calendar.nextMonth()">▶</button>
+                        </div>
+                        <div class="calendar-grid" id="calendar-grid">
+                            <!-- Calendar will be generated by JavaScript -->
+                        </div>
+                        <div class="event-input">
+                            <input type="text" id="event-input" placeholder="Add event...">
+                            <button onclick="retroBot.calendar.addEvent()">Add</button>
+                        </div>
+                    </div>
+
+                    <!-- Todo Tool -->
+                    <div class="tool-content" id="tool-todo">
+                        <div class="todo-input">
+                            <input type="text" id="todo-input" placeholder="Add todo...">
+                            <button onclick="retroBot.todo.add()">Add</button>
+                        </div>
+                        <div class="todo-list" id="todo-list">
+                            <!-- Todos will be generated by JavaScript -->
+                        </div>
+                        <div class="todo-stats">
+                            <span id="todo-stats">0 tasks completed today</span>
+                        </div>
+                    </div>
+
+                    <!-- Music Tool -->
+                    <div class="tool-content" id="tool-music">
+                        <div class="music-player">
+                            <div class="track-info">
+                                <div class="track-title" id="track-title">No track selected</div>
+                                <div class="track-artist" id="track-artist">Select a track to play</div>
+                            </div>
+                            <div class="player-controls">
+                                <button onclick="retroBot.music.prev()">⏮</button>
+                                <button onclick="retroBot.music.play()" id="play-btn">▶</button>
+                                <button onclick="retroBot.music.next()">⏭</button>
+                            </div>
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" id="volume-slider" min="0" max="100" value="50">
+                            </div>
+                            <div class="playlist">
+                                <select id="track-select" onchange="retroBot.music.selectTrack()">
+                                    <option value="">Select a track...</option>
+                                    <option value="retro1">Neon Dreams</option>
+                                    <option value="retro2">Pixel Paradise</option>
+                                    <option value="retro3">Synthwave Sunset</option>
+                                    <option value="retro4">8-bit Adventure</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="js/personality.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/tools/calendar.js"></script>
+    <script src="js/tools/todo.js"></script>
+    <script src="js/tools/music.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/konami.js"></script>
+    <script src="js/retrobot-core.js"></script>
+    
+</body>
+</html>
